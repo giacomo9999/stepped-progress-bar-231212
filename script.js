@@ -16,10 +16,17 @@ const update = () => {
     }
   });
   const actives = document.querySelectorAll(".active");
-  const barWidth = ((actives.length - 1) / (circles.length - 1)) * 100 + "%";
-  console.log(barWidth);
-  
-  progress.style.width = barWidth;
+  progress.style.width =
+    ((actives.length - 1) / (circles.length - 1)) * 100 + "%";
+
+  if (currentActive === 1) {
+    prev.disabled = true;
+  } else if (currentActive === circles.length) {
+    next.disabled = true;
+  } else {
+    next.disabled = false;
+    prev.disabled = false;
+  }
 };
 
 next.addEventListener("click", () => {
